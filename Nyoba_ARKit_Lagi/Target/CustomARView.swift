@@ -153,6 +153,11 @@ class CustomARView: ARView {
             modelEntity.setScale(SIMD3(x: 0.1, y: 0.1, z: 0.1), relativeTo: modelEntity)
         }
         
+        if let entityAnimation = modelEntity.availableAnimations.first{
+//            play animation
+            modelEntity.playAnimation(entityAnimation.repeat(), transitionDuration: 5, startsPaused: false)
+        }
+        
         // create an anchor entity and add the model to it
         let anchorEntity = AnchorEntity(plane: .horizontal)
         anchorEntity.addChild(modelEntity)
