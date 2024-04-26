@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var models = [
-        "IniDioramaJadi",
-        "ToyBiplane",
         "Tiger"
     ]
     
