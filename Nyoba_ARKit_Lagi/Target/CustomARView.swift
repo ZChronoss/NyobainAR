@@ -30,11 +30,22 @@ class CustomARView: ARView {
 //        coaching tu yg ada tulisan "Move iPhone to Start"
         addCoaching()
         loadModel(model: "Tiger")
+        placeBlock()
 //        createBackground()
 //        subscribeToActionStream()
         
 //        butuh ini keknya gegara kita tu make ARView nya bukan di aplikasi AR, tp di aplikasi swiftui biasa
-        self.installGestures([.all], for: modelEntity! as HasCollision)
+//        self.installGestures([.all], for: modelEntity! as HasCollision)
+        
+        /*
+         buat installGesture ini ada:
+         1. All: termasuk semua
+         2. rotation: buat rotate model
+         3. scale: buat gede kecilin modelnya
+         4. translation: buat gerakin modelnya
+         
+         disini gw coba matiin tp ternyata macannya bisa kepencet. Emg buat control modelnya aja ini
+         */
         
 //        ini intinya buat kasih tau kalo user ada tap di layar
         /*
@@ -44,6 +55,8 @@ class CustomARView: ARView {
          */
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         self.addGestureRecognizer(tap)
+        
+
     }
     
     func planeDetection(){
@@ -63,6 +76,10 @@ class CustomARView: ARView {
     func loadModel(model: String){
         modelEntity = try! Entity.loadModel(named: model + ".usdz")
         modelEntity?.setScale(SIMD3(x: 0.1, y: 0.1, z: 0.1), relativeTo: modelEntity)
+        modelEntity?.name = "Macan"
+        
+//        nyalain collision buat modelnya
+        modelEntity?.generateCollisionShapes(recursive: true)
     }
     
 //    cancellable is needed whenever your app is using Combine
@@ -94,16 +111,30 @@ class CustomARView: ARView {
 //        2D tap location
         guard let tapLocation = recognizer?.location(in: self) else { return }
         
-//        raycast = 2d to 3d
-        let results = self.raycast(from: tapLocation, allowing: .estimatedPlane, alignment: .horizontal)
+//        dia kek nyalain hit test gitu
+        let result: [CollisionCastHit] = self.hitTest(tapLocation)
+
+//        buat dapetin resultnya
+        guard let hitTest: CollisionCastHit = result.first
+        else { return }
+
+//        ini entity yang kepencet
+        let entity: Entity = hitTest.entity
         
-        if let firstResult = results.first {
+        print(entity.name)
+        
+//        raycast = 2d to 3d
+//        let results = self.raycast(from: tapLocation, allowing: .estimatedPlane, alignment: .horizontal)
+        
+//        if let firstResult = results.first {
 //            3d position
-            let worldPos = simd_make_float3(firstResult.worldTransform.columns.3)
-            
+//            let worldPos = simd_make_float3(firstResult.worldTransform.columns.3)
 //            place object
-            placeBlock(position: worldPos)
-        }
+//            placeBlock(position: worldPos)
+            
+            //        Move the model
+//            moveEntity(direction: "forward")
+//        }
     }
 
     func addCoaching(){
@@ -117,6 +148,8 @@ class CustomARView: ARView {
              
         // How a view should resize itself when its superview's bounds change.
         coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        coachingOverlay.activatesAutomatically = true
 
         self.addSubview(coachingOverlay)
         
@@ -142,9 +175,9 @@ class CustomARView: ARView {
         scene.addAnchor(anchor)
     }
     
-    func placeBlock(position: SIMD3<Float>){
+    func placeBlock(){
         // create an anchor entity and add the model to it
-        let anchorEntity = AnchorEntity(world: position)
+        let anchorEntity = AnchorEntity(plane: .horizontal)
         anchorEntity.addChild(modelEntity!)
         
         playAnimation()
@@ -163,8 +196,9 @@ class CustomARView: ARView {
         switch direction{
         case "forward":
 //            ini maju kedepan. translation itu buat kasih tau kalo maju kedepan nambahin vector z nya 20
-            moveToLocation.translation = (modelEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: 20)
+            moveToLocation.translation = (modelEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: 100)
             modelEntity?.move(to: moveToLocation, relativeTo: modelEntity, duration: 5)
+            print("gerak depan")
             
 //            nambahin animasi jalan kalo bisa wkwk
         
