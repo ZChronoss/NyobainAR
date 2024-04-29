@@ -39,8 +39,9 @@ class CustomARView: ARView {
         placeTiger()
         
 //        buat pohon
-        for _ in 1...5{
+        for _ in 1...10{
             placeTree(tree: "Maple_Tree")
+            placeTree(tree: "Pohon_Jauh")
         }
         
 //        createBackground()
@@ -218,9 +219,43 @@ class CustomARView: ARView {
         moveEntity(direction: "left")
     }
     
-    func randomPosition() -> SIMD3<Float>{
-        let x = Float.random(in: -5 ... 5)
-        let z = Float.random(in: -5 ... 5)
+    func randPosValidator(r1: Float, r2: Float, axis: Float) -> Float{
+        var retVal: Float = axis
+        
+//      ini kalo angka random jatoh di antara -1 s.d. 0 bakal di kurangin -1 biar ga terlalu deket sama user
+        if (-r1 ... r2).contains(axis){
+            retVal = axis - (-r1)
+        }
+        //      ini kalo 0 s.d. 1 bakal ditambah 1.
+        else if (r2 ... r1).contains(axis) {
+            retVal = axis + r1
+        }
+        
+        return retVal
+    }
+    
+    func randomPosition(tree: String) -> SIMD3<Float>{
+        var x: Float = 0
+        var z: Float = 0
+        switch tree{
+        case "Maple_Tree":
+            x = Float.random(in: -5 ... 5)
+            z = Float.random(in: -5 ... 5)
+            
+            x = randPosValidator(r1: 1, r2: 0, axis: x)
+            z = randPosValidator(r1: 1, r2: 0, axis: z)
+
+        case "Pohon_Jauh":
+            x = Float.random(in: -10 ... 10)
+            z = Float.random(in: -10 ... 10)
+            
+//            ini buat pohon jauh gw jauhin jadi 10 meteran dari user dan ga bakal spawn di jarak 5 meter dari user
+            x = randPosValidator(r1: 5, r2: 0, axis: x)
+            z = randPosValidator(r1: 5, r2: 0, axis: z)
+            
+        default:
+            print("No Tree model with that name")
+        }
         let randPos = SIMD3<Float>(x: x, y: 0, z: z)
         
         print(randPos)
@@ -237,11 +272,11 @@ class CustomARView: ARView {
                 print(error)
                 cancellable?.cancel()
             }, receiveValue: { entity in
-                anchorEntity.addChild(entity)
+                anchorEntity.addChild(entity.clone(recursive: true))
                 cancellable?.cancel()
             })
         
-        anchorEntity.setPosition(randomPosition(), relativeTo: anchorEntity)
+        anchorEntity.setPosition(randomPosition(tree: tree), relativeTo: anchorEntity)
         
         scene.addAnchor(anchorEntity)
     }
