@@ -17,6 +17,7 @@
 		110F649D2BDC0C610031CC8B /* ARAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F64992BDC0C610031CC8B /* ARAction.swift */; };
 		110F64A02BDC0E040031CC8B /* Mountain_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 110F649F2BDC0E040031CC8B /* Mountain_BG.png */; };
 		110F64A22BDC0E120031CC8B /* Tiger.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 110F64A12BDC0E110031CC8B /* Tiger.usdz */; };
+		4B726A052BDFA04300626682 /* Page1AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B726A042BDFA04300626682 /* Page1AR.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		110F64992BDC0C610031CC8B /* ARAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAction.swift; sourceTree = "<group>"; };
 		110F649F2BDC0E040031CC8B /* Mountain_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mountain_BG.png; sourceTree = "<group>"; };
 		110F64A12BDC0E110031CC8B /* Tiger.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Tiger.usdz; sourceTree = "<group>"; };
+		4B726A042BDFA04300626682 /* Page1AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1AR.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				110F64972BDC0C610031CC8B /* CustomARView.swift */,
 				110F64982BDC0C610031CC8B /* CustomARViewRepresentable.swift */,
 				110F64892BDC0BAA0031CC8B /* ContentView.swift */,
+				4B726A042BDFA04300626682 /* Page1AR.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				110F649C2BDC0C610031CC8B /* CustomARViewRepresentable.swift in Sources */,
+				4B726A052BDFA04300626682 /* Page1AR.swift in Sources */,
 				110F648A2BDC0BAA0031CC8B /* ContentView.swift in Sources */,
 				110F649D2BDC0C610031CC8B /* ARAction.swift in Sources */,
 				110F649A2BDC0C610031CC8B /* ARManager.swift in Sources */,
@@ -312,7 +316,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nyoba_ARKit_Lagi/Preview Content\"";
-				DEVELOPMENT_TEAM = 53V73K3799;
+				DEVELOPMENT_TEAM = 9583KK75Q4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Wants to use camera for AR";
@@ -346,7 +350,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nyoba_ARKit_Lagi/Preview Content\"";
-				DEVELOPMENT_TEAM = 53V73K3799;
+				DEVELOPMENT_TEAM = 9583KK75Q4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Wants to use camera for AR";

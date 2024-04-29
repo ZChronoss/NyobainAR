@@ -11,7 +11,7 @@ import SwiftUI
 struct Nyoba_ARKit_LagiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Page1AR()
         }
     }
 }
