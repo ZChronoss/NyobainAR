@@ -13,7 +13,10 @@ import ARKit
 class CustomARView: ARView {
     
     var moveToLocation: Transform = Transform()
-    var modelEntity: ModelEntity?
+    var tigerEntity: ModelEntity?
+    var tigerAudio: AudioResource?
+    
+    var treeModel: ModelEntity?
     
     required init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
@@ -26,11 +29,20 @@ class CustomARView: ARView {
     convenience init(){
         self.init(frame: UIScreen().bounds)
         
+//        self.environment.background = .
+        
         planeDetection()
 //        coaching tu yg ada tulisan "Move iPhone to Start"
+        
         addCoaching()
-        loadModel(model: "Tiger")
-        placeBlock()
+        loadAudio()
+        placeTiger()
+        
+//        buat pohon
+        for _ in 1...5{
+            placeTree(tree: "Maple_Tree")
+        }
+        
 //        createBackground()
 //        subscribeToActionStream()
         
@@ -66,20 +78,16 @@ class CustomARView: ARView {
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal,.vertical]
         config.environmentTexturing = .automatic
+//        config.worldAlignment = .gravityAndHeading
+        config.isAutoFocusEnabled = true
         
 //        yg debugOptions ini buat keluarin ijo2 di plane yg ke detect
         self.debugOptions = .showAnchorGeometry
         self.session.run(config)
     }
     
-//    ini load model
-    func loadModel(model: String){
-        modelEntity = try! Entity.loadModel(named: model + ".usdz")
-        modelEntity?.setScale(SIMD3(x: 0.1, y: 0.1, z: 0.1), relativeTo: modelEntity)
-        modelEntity?.name = "Macan"
-        
-//        nyalain collision buat modelnya
-        modelEntity?.generateCollisionShapes(recursive: true)
+    func loadAudio(){
+        tigerAudio = try? AudioFileResource.load(named: "tiger_roar.wav")
     }
     
 //    cancellable is needed whenever your app is using Combine
@@ -122,6 +130,10 @@ class CustomARView: ARView {
         let entity: Entity = hitTest.entity
         
         print(entity.name)
+        
+        if(entity.name == "Macan") {
+            modelAction()
+        }
         
 //        raycast = 2d to 3d
 //        let results = self.raycast(from: tapLocation, allowing: .estimatedPlane, alignment: .horizontal)
@@ -175,10 +187,18 @@ class CustomARView: ARView {
         scene.addAnchor(anchor)
     }
     
-    func placeBlock(){
-        // create an anchor entity and add the model to it
+    func placeTiger(){
         let anchorEntity = AnchorEntity(plane: .horizontal)
-        anchorEntity.addChild(modelEntity!)
+        
+        tigerEntity = try? Entity.loadModel(named: "Tiger.usdz")
+        
+        
+        tigerEntity?.setScale(SIMD3(x: 0.1, y: 0.1, z: 0.1), relativeTo: tigerEntity)
+        tigerEntity?.name = "Macan"
+        
+//        nyalain collision buat modelnya
+        tigerEntity?.generateCollisionShapes(recursive: true)
+        anchorEntity.addChild(tigerEntity!)
         
         playAnimation()
         
@@ -186,33 +206,67 @@ class CustomARView: ARView {
     }
     
     func playAnimation(){
-        if let entityAnimation = modelEntity?.availableAnimations.first{
+        if let entityAnimation = tigerEntity?.availableAnimations.first{
 //            play animation
-            modelEntity?.playAnimation(entityAnimation.repeat(), transitionDuration: 5, startsPaused: false)
+            tigerEntity?.playAnimation(entityAnimation.repeat(), transitionDuration: 5, startsPaused: false)
         }
+    }
+    
+    func modelAction(){
+        moveEntity(direction: "forward")
+        tigerEntity?.playAudio(tigerAudio!)
+        moveEntity(direction: "left")
+    }
+    
+    func randomPosition() -> SIMD3<Float>{
+        let x = Float.random(in: -5 ... 5)
+        let z = Float.random(in: -5 ... 5)
+        let randPos = SIMD3<Float>(x: x, y: 0, z: z)
+        
+        print(randPos)
+        return randPos
+    }
+    
+    func placeTree(tree: String){
+//        treeModel = try! Entity.loadModel(named: tree + ".usdz")
+        let anchorEntity = AnchorEntity(plane: .horizontal)
+        
+        var cancellable: AnyCancellable? = nil
+        cancellable = Entity.loadModelAsync(named: tree + ".usdz")
+            .sink(receiveCompletion: { error in
+                print(error)
+                cancellable?.cancel()
+            }, receiveValue: { entity in
+                anchorEntity.addChild(entity)
+                cancellable?.cancel()
+            })
+        
+        anchorEntity.setPosition(randomPosition(), relativeTo: anchorEntity)
+        
+        scene.addAnchor(anchorEntity)
     }
     
     func moveEntity(direction: String){
         switch direction{
         case "forward":
 //            ini maju kedepan. translation itu buat kasih tau kalo maju kedepan nambahin vector z nya 20
-            moveToLocation.translation = (modelEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: 100)
-            modelEntity?.move(to: moveToLocation, relativeTo: modelEntity, duration: 5)
+            moveToLocation.translation = (tigerEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: 100)
+            tigerEntity?.move(to: moveToLocation, relativeTo: tigerEntity, duration: 5)
             print("gerak depan")
             
 //            nambahin animasi jalan kalo bisa wkwk
         
         case "back":
-            moveToLocation.translation = (modelEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: -20)
-            modelEntity?.move(to: moveToLocation, relativeTo: modelEntity, duration: 5)
+            moveToLocation.translation = (tigerEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: -20)
+            tigerEntity?.move(to: moveToLocation, relativeTo: tigerEntity, duration: 5)
             
         case "left":
             let rotateAngle = simd_quatf(angle: GLKMathDegreesToRadians(90), axis: SIMD3(x: 0, y: 1, z: 0))
-            modelEntity?.setOrientation(rotateAngle, relativeTo: modelEntity)
+            tigerEntity?.setOrientation(rotateAngle, relativeTo: tigerEntity)
             
         case "right":
             let rotateAngle = simd_quatf(angle: GLKMathDegreesToRadians(90), axis: SIMD3(x: 0, y: 1, z: 0))
-            modelEntity?.setOrientation(rotateAngle, relativeTo: modelEntity)
+            tigerEntity?.setOrientation(rotateAngle, relativeTo: tigerEntity)
         default:
             print("Ga gerak mas")
         }

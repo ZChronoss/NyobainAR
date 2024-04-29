@@ -17,6 +17,8 @@
 		110F649D2BDC0C610031CC8B /* ARAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F64992BDC0C610031CC8B /* ARAction.swift */; };
 		110F64A02BDC0E040031CC8B /* Mountain_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 110F649F2BDC0E040031CC8B /* Mountain_BG.png */; };
 		110F64A22BDC0E120031CC8B /* Tiger.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 110F64A12BDC0E110031CC8B /* Tiger.usdz */; };
+		110F64A62BDEBB230031CC8B /* tiger_roar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 110F64A52BDEBB220031CC8B /* tiger_roar.wav */; };
+		110F64A92BDF8BB50031CC8B /* Maple_Tree.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 110F64A82BDF8BB50031CC8B /* Maple_Tree.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,9 @@
 		110F64992BDC0C610031CC8B /* ARAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAction.swift; sourceTree = "<group>"; };
 		110F649F2BDC0E040031CC8B /* Mountain_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mountain_BG.png; sourceTree = "<group>"; };
 		110F64A12BDC0E110031CC8B /* Tiger.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Tiger.usdz; sourceTree = "<group>"; };
+		110F64A52BDEBB220031CC8B /* tiger_roar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tiger_roar.wav; sourceTree = "<group>"; };
+		110F64A72BDEC2230031CC8B /* Nyoba-ARKit-Lagi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nyoba-ARKit-Lagi-Info.plist"; sourceTree = SOURCE_ROOT; };
+		110F64A82BDF8BB50031CC8B /* Maple_Tree.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Maple_Tree.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,7 @@
 		110F64862BDC0BAA0031CC8B /* Nyoba_ARKit_Lagi */ = {
 			isa = PBXGroup;
 			children = (
+				110F64A72BDEC2230031CC8B /* Nyoba-ARKit-Lagi-Info.plist */,
 				110F649E2BDC0DD30031CC8B /* Assets */,
 				110F64952BDC0C220031CC8B /* Target */,
 				110F64872BDC0BAA0031CC8B /* Nyoba_ARKit_LagiApp.swift */,
@@ -95,7 +101,9 @@
 		110F649E2BDC0DD30031CC8B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				110F64A82BDF8BB50031CC8B /* Maple_Tree.usdz */,
 				110F64A12BDC0E110031CC8B /* Tiger.usdz */,
+				110F64A52BDEBB220031CC8B /* tiger_roar.wav */,
 				110F649F2BDC0E040031CC8B /* Mountain_BG.png */,
 			);
 			path = Assets;
@@ -160,9 +168,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				110F648F2BDC0BAC0031CC8B /* Preview Assets.xcassets in Resources */,
+				110F64A62BDEBB230031CC8B /* tiger_roar.wav in Resources */,
 				110F64A22BDC0E120031CC8B /* Tiger.usdz in Resources */,
 				110F64A02BDC0E040031CC8B /* Mountain_BG.png in Resources */,
 				110F648C2BDC0BAC0031CC8B /* Assets.xcassets in Resources */,
+				110F64A92BDF8BB50031CC8B /* Maple_Tree.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +325,7 @@
 				DEVELOPMENT_TEAM = 53V73K3799;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Nyoba-ARKit-Lagi-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Wants to use camera for AR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -349,6 +360,7 @@
 				DEVELOPMENT_TEAM = 53V73K3799;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Nyoba-ARKit-Lagi-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Wants to use camera for AR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
