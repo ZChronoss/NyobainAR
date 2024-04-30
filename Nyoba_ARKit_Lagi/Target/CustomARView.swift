@@ -86,7 +86,7 @@ class CustomARView: ARView {
         config.isAutoFocusEnabled = true
         
 //        yg debugOptions ini buat keluarin ijo2 di plane yg ke detect
-        self.debugOptions = .showAnchorGeometry
+//        self.debugOptions = .showAnchorGeometry
         self.session.run(config)
     }
     

@@ -20,6 +20,8 @@
 		110F64A62BDEBB230031CC8B /* tiger_roar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 110F64A52BDEBB220031CC8B /* tiger_roar.wav */; };
 		110F64A92BDF8BB50031CC8B /* Maple_Tree.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 110F64A82BDF8BB50031CC8B /* Maple_Tree.usdz */; };
 		110F64B12BDFB2FE0031CC8B /* Pohon_Jauh.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 110F64B02BDFB2FE0031CC8B /* Pohon_Jauh.usdz */; };
+		4B726A052BDFA04300626682 /* Page1AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B726A042BDFA04300626682 /* Page1AR.swift */; };
+		4BD6990C2BE009560085E99B /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6990B2BE009560085E99B /* LandingPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		110F64A72BDEC2230031CC8B /* Nyoba-ARKit-Lagi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nyoba-ARKit-Lagi-Info.plist"; sourceTree = SOURCE_ROOT; };
 		110F64A82BDF8BB50031CC8B /* Maple_Tree.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Maple_Tree.usdz; sourceTree = "<group>"; };
 		110F64B02BDFB2FE0031CC8B /* Pohon_Jauh.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Pohon_Jauh.usdz; sourceTree = "<group>"; };
+		4B726A042BDFA04300626682 /* Page1AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1AR.swift; sourceTree = "<group>"; };
+		4BD6990B2BE009560085E99B /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 				110F64972BDC0C610031CC8B /* CustomARView.swift */,
 				110F64982BDC0C610031CC8B /* CustomARViewRepresentable.swift */,
 				110F64892BDC0BAA0031CC8B /* ContentView.swift */,
+				4B726A042BDFA04300626682 /* Page1AR.swift */,
+				4BD6990B2BE009560085E99B /* LandingPage.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -188,10 +194,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				110F649C2BDC0C610031CC8B /* CustomARViewRepresentable.swift in Sources */,
+				4B726A052BDFA04300626682 /* Page1AR.swift in Sources */,
 				110F648A2BDC0BAA0031CC8B /* ContentView.swift in Sources */,
 				110F649D2BDC0C610031CC8B /* ARAction.swift in Sources */,
 				110F649A2BDC0C610031CC8B /* ARManager.swift in Sources */,
 				110F649B2BDC0C610031CC8B /* CustomARView.swift in Sources */,
+				4BD6990C2BE009560085E99B /* LandingPage.swift in Sources */,
 				110F64882BDC0BAA0031CC8B /* Nyoba_ARKit_LagiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,14 +334,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nyoba_ARKit_Lagi/Preview Content\"";
-				DEVELOPMENT_TEAM = 53V73K3799;
+				DEVELOPMENT_TEAM = 9583KK75Q4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nyoba-ARKit-Lagi-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Monara;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Wants to use camera for AR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -361,14 +369,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nyoba_ARKit_Lagi/Preview Content\"";
-				DEVELOPMENT_TEAM = 53V73K3799;
+				DEVELOPMENT_TEAM = 9583KK75Q4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nyoba-ARKit-Lagi-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Monara;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Wants to use camera for AR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
