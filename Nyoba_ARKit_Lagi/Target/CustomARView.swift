@@ -18,6 +18,8 @@ class CustomARView: ARView {
     
     var treeModel: ModelEntity?
     
+    var tap = UITapGestureRecognizer()
+    
     required init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
     }
@@ -37,6 +39,7 @@ class CustomARView: ARView {
         addCoaching()
         loadAudio()
         placeTiger()
+        modelAction()
         
 //        buat pohon
         for _ in 1...10{
@@ -66,7 +69,7 @@ class CustomARView: ARView {
          1. target: target object yg datanya mau dikirim
          2. action: jalanin function apa setelah ada gesture (disini tap gesture). functionnya harus ada @objc
          */
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
+        tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         self.addGestureRecognizer(tap)
         
 
@@ -133,7 +136,7 @@ class CustomARView: ARView {
         print(entity.name)
         
         if(entity.name == "Macan") {
-            modelAction()
+//            modelAction()
         }
         
 //        raycast = 2d to 3d
@@ -168,26 +171,6 @@ class CustomARView: ARView {
         
     }
     
-//    ini buat bikin background png doang
-    func createBackground(){
-        let screen = MeshResource.generatePlane(width: 1, depth: 1)
-        var material = UnlitMaterial()
-        
-        if let baseResource = try? TextureResource.load(named: "Mountain_BG"){
-            let baseColor = MaterialParameters.Texture(baseResource)
-            
-//            ini yang bikin background di gambar ilang
-            material.color = .init(tint: UIColor(white: 1, alpha: 0.99), texture: baseColor)
-        }
-        
-        let imageModelEntity = ModelEntity(mesh: screen, materials: [material])
-        let anchor = AnchorEntity(plane: .vertical)
-        
-        anchor.addChild(imageModelEntity)
-        
-        scene.addAnchor(anchor)
-    }
-    
     func placeTiger(){
         let anchorEntity = AnchorEntity(plane: .horizontal)
         
@@ -200,6 +183,18 @@ class CustomARView: ARView {
 //        nyalain collision buat modelnya
         tigerEntity?.generateCollisionShapes(recursive: true)
         anchorEntity.addChild(tigerEntity!)
+        
+        var x = Float.random(in: -5 ... 5)
+        var z = Float.random(in: -5 ... 5)
+        
+//        print("\(x)\n\(z)\n")
+        
+        x = randPosValidator(r1: 1.5, r2: 0, axis: x)
+        z = randPosValidator(r1: 1.5, r2: 0, axis: z)
+        
+        anchorEntity.setPosition(SIMD3<Float>(x: x, y: 0, z: z), relativeTo: anchorEntity)
+        
+//        print("\(x)\n\(z)")
         
         playAnimation()
         
@@ -214,9 +209,29 @@ class CustomARView: ARView {
     }
     
     func modelAction(){
-        moveEntity(direction: "forward")
-        tigerEntity?.playAudio(tigerAudio!)
-        moveEntity(direction: "left")
+        let randNum = Int.random(in: 1 ... 4)
+        var movement = moveEntity(direction: "forward")
+//        tigerEntity?.playAudio(tigerAudio!)
+        
+        self.scene.publisher(for: AnimationEvents.PlaybackCompleted.self)
+            .filter{ $0.playbackController == movement }
+            .sink(receiveValue: { event in
+//                movement = self.moveEntity(direction: "back")
+                switch randNum {
+                    case 1:
+                        movement = self.moveEntity(direction: "forward")
+                    case 2:
+                        movement = self.moveEntity(direction: "back")
+                    case 3:
+                        movement = self.moveEntity(direction: "left")
+                    case 4:
+                        movement = self.moveEntity(direction: "right")
+                    default:
+                        print("error")
+                }
+                self.cancellables.removeAll()
+                self.modelAction()
+            }).store(in: &cancellables)
     }
     
     func randPosValidator(r1: Float, r2: Float, axis: Float) -> Float{
@@ -224,7 +239,7 @@ class CustomARView: ARView {
         
 //      ini kalo angka random jatoh di antara -1 s.d. 0 bakal di kurangin -1 biar ga terlalu deket sama user
         if (-r1 ... r2).contains(axis){
-            retVal = axis - (-r1)
+            retVal = axis - r1
         }
         //      ini kalo 0 s.d. 1 bakal ditambah 1.
         else if (r2 ... r1).contains(axis) {
@@ -234,7 +249,7 @@ class CustomARView: ARView {
         return retVal
     }
     
-    func randomPosition(tree: String) -> SIMD3<Float>{
+    func randomTreePosition(tree: String) -> SIMD3<Float>{
         var x: Float = 0
         var z: Float = 0
         switch tree{
@@ -258,7 +273,7 @@ class CustomARView: ARView {
         }
         let randPos = SIMD3<Float>(x: x, y: 0, z: z)
         
-        print(randPos)
+//        print(randPos)
         return randPos
     }
     
@@ -276,35 +291,68 @@ class CustomARView: ARView {
                 cancellable?.cancel()
             })
         
-        anchorEntity.setPosition(randomPosition(tree: tree), relativeTo: anchorEntity)
+        anchorEntity.setPosition(randomTreePosition(tree: tree), relativeTo: anchorEntity)
         
         scene.addAnchor(anchorEntity)
     }
     
-    func moveEntity(direction: String){
+    func moveEntity(direction: String) -> AnimationPlaybackController{
+        var movement: AnimationPlaybackController!
+        
+        
         switch direction{
         case "forward":
 //            ini maju kedepan. translation itu buat kasih tau kalo maju kedepan nambahin vector z nya 20
             moveToLocation.translation = (tigerEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: 100)
-            tigerEntity?.move(to: moveToLocation, relativeTo: tigerEntity, duration: 5)
+            movement = tigerEntity?.move(to: moveToLocation, relativeTo: tigerEntity, duration: 5)
+            
             print("gerak depan")
             
 //            nambahin animasi jalan kalo bisa wkwk
         
         case "back":
-            moveToLocation.translation = (tigerEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: -20)
-            tigerEntity?.move(to: moveToLocation, relativeTo: tigerEntity, duration: 5)
+            let rotateAngle = simd_quatf(angle: GLKMathDegreesToRadians(180), axis: SIMD3(x: 0, y: 1, z: 0))
+//            tigerEntity?.setOrientation(rotateAngle, relativeTo: tigerEntity)
+            
+            var rotationTransform = tigerEntity?.transform
+            rotationTransform?.rotation = rotateAngle
+            movement = tigerEntity?.move(to: rotationTransform!, relativeTo: tigerEntity?.parent, duration: 5)
+            
+//            moveToLocation.translation = (tigerEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: 100)
+//            movement = tigerEntity?.move(to: moveToLocation, relativeTo: tigerEntity, duration: 5)
+            
+            print("gerak belakang")
             
         case "left":
             let rotateAngle = simd_quatf(angle: GLKMathDegreesToRadians(90), axis: SIMD3(x: 0, y: 1, z: 0))
-            tigerEntity?.setOrientation(rotateAngle, relativeTo: tigerEntity)
+//            tigerEntity?.setOrientation(rotateAngle, relativeTo: tigerEntity)
+            
+            var rotationTransform = tigerEntity?.transform
+            rotationTransform?.rotation = rotateAngle
+            movement = tigerEntity?.move(to: rotationTransform!, relativeTo: tigerEntity?.parent, duration: 5)
+            
+//            moveToLocation.translation = (tigerEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: 100)
+//            movement = tigerEntity?.move(to: moveToLocation, relativeTo: tigerEntity, duration: 5)
+            
+            print("gerak kiri")
             
         case "right":
-            let rotateAngle = simd_quatf(angle: GLKMathDegreesToRadians(90), axis: SIMD3(x: 0, y: 1, z: 0))
-            tigerEntity?.setOrientation(rotateAngle, relativeTo: tigerEntity)
+            let rotateAngle = simd_quatf(angle: GLKMathDegreesToRadians(-90), axis: SIMD3(x: 0, y: 1, z: 0))
+//            tigerEntity?.setOrientation(rotateAngle, relativeTo: tigerEntity)
+            
+            var rotationTransform = tigerEntity?.transform
+            rotationTransform?.rotation = rotateAngle
+            movement = tigerEntity?.move(to: rotationTransform!, relativeTo: tigerEntity?.parent, duration: 5)
+            
+//            moveToLocation.translation = (tigerEntity?.transform.translation)! + simd_float3(x: 0, y: 0, z: 100)
+//            movement = tigerEntity?.move(to: moveToLocation, relativeTo: tigerEntity, duration: 5)
+            
+            print("gerak kanan")
         default:
             print("Ga gerak mas")
         }
+        
+        return movement
     }
     
     
