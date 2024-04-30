@@ -37,7 +37,7 @@ class CustomARView: ARView {
 //        coaching tu yg ada tulisan "Move iPhone to Start"
         
         addCoaching()
-        loadAudio()
+//        loadAudio()
         placeTiger()
         modelAction()
         
@@ -91,7 +91,7 @@ class CustomARView: ARView {
     }
     
     func loadAudio(){
-        tigerAudio = try? AudioFileResource.load(named: "tiger_roar.wav")
+        tigerAudio = try? AudioFileResource.load(named: "tiger_roar.mp3", inputMode: .spatial, loadingStrategy: .preload,  shouldLoop: false)
     }
     
 //    cancellable is needed whenever your app is using Combine
@@ -137,6 +137,7 @@ class CustomARView: ARView {
         
         if(entity.name == "Macan") {
 //            modelAction()
+            tigerEntity?.playAudio(tigerAudio!)
         }
         
 //        raycast = 2d to 3d
@@ -197,6 +198,8 @@ class CustomARView: ARView {
 //        print("\(x)\n\(z)")
         
         playAnimation()
+        loadAudio()
+//        tigerEntity?.playAudio(tigerAudio!)
         
         scene.addAnchor(anchorEntity)
     }
