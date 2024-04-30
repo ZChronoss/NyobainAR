@@ -19,11 +19,14 @@ struct Page1AR: View {
                 VStack {
                     NavigationLink(destination: CustomARViewRepresentable()) {
                         Image("LocationForest")
-                            .position(x:100.0, y:532.0)
+                            .resizable()
+                            .scaledToFit()
                             .padding()
 //                            .onTapGesture {
 //                                isForestTap.toggle()
                         }
+                    .frame(width: 105, height: 150)
+                    .position(x:100.0, y:532.0)
                     }
 
                 
