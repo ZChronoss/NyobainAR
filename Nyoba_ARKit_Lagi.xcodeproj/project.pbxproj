@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		110F64842BDC0BAA0031CC8B /* Monara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monara.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		110F64842BDC0BAA0031CC8B /* Nyoba_ARKit_Lagi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nyoba_ARKit_Lagi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		110F64872BDC0BAA0031CC8B /* Nyoba_ARKit_LagiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nyoba_ARKit_LagiApp.swift; sourceTree = "<group>"; };
 		110F64892BDC0BAA0031CC8B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		110F648B2BDC0BAC0031CC8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		110F64852BDC0BAA0031CC8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				110F64842BDC0BAA0031CC8B /* Monara.app */,
+				110F64842BDC0BAA0031CC8B /* Nyoba_ARKit_Lagi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,9 +118,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		110F64832BDC0BAA0031CC8B /* Monara */ = {
+		110F64832BDC0BAA0031CC8B /* Nyoba_ARKit_Lagi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 110F64922BDC0BAC0031CC8B /* Build configuration list for PBXNativeTarget "Monara" */;
+			buildConfigurationList = 110F64922BDC0BAC0031CC8B /* Build configuration list for PBXNativeTarget "Nyoba_ARKit_Lagi" */;
 			buildPhases = (
 				110F64802BDC0BAA0031CC8B /* Sources */,
 				110F64812BDC0BAA0031CC8B /* Frameworks */,
@@ -130,9 +130,9 @@
 			);
 			dependencies = (
 			);
-			name = Monara;
+			name = Nyoba_ARKit_Lagi;
 			productName = Nyoba_ARKit_Lagi;
-			productReference = 110F64842BDC0BAA0031CC8B /* Monara.app */;
+			productReference = 110F64842BDC0BAA0031CC8B /* Nyoba_ARKit_Lagi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -150,7 +150,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 110F647F2BDC0BAA0031CC8B /* Build configuration list for PBXProject "Monara" */;
+			buildConfigurationList = 110F647F2BDC0BAA0031CC8B /* Build configuration list for PBXProject "Nyoba_ARKit_Lagi" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -163,7 +163,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				110F64832BDC0BAA0031CC8B /* Monara */,
+				110F64832BDC0BAA0031CC8B /* Nyoba_ARKit_Lagi */,
 			);
 		};
 /* End PBXProject section */
@@ -395,7 +395,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		110F647F2BDC0BAA0031CC8B /* Build configuration list for PBXProject "Monara" */ = {
+		110F647F2BDC0BAA0031CC8B /* Build configuration list for PBXProject "Nyoba_ARKit_Lagi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				110F64902BDC0BAC0031CC8B /* Debug */,
@@ -404,7 +404,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		110F64922BDC0BAC0031CC8B /* Build configuration list for PBXNativeTarget "Monara" */ = {
+		110F64922BDC0BAC0031CC8B /* Build configuration list for PBXNativeTarget "Nyoba_ARKit_Lagi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				110F64932BDC0BAC0031CC8B /* Debug */,
