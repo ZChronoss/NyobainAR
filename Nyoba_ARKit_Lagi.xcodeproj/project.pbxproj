@@ -25,6 +25,12 @@
 		11FB4C992BE2372600C42364 /* Forest_Ambient.wav in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4C982BE2372600C42364 /* Forest_Ambient.wav */; };
 		11FB4C9C2BE23C3400C42364 /* Fog.sks in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4C9A2BE23C3400C42364 /* Fog.sks */; };
 		11FB4C9D2BE23C3400C42364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4C9B2BE23C3400C42364 /* Assets.xcassets */; };
+		11FB4CA72BE2B11F00C42364 /* steps_dirt_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA02BE2B11F00C42364 /* steps_dirt_1.mp3 */; };
+		11FB4CA82BE2B11F00C42364 /* steps_dirt_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA12BE2B11F00C42364 /* steps_dirt_2.mp3 */; };
+		11FB4CA92BE2B11F00C42364 /* steps_dirt_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA22BE2B11F00C42364 /* steps_dirt_3.mp3 */; };
+		11FB4CAA2BE2B11F00C42364 /* steps_dirt_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA32BE2B11F00C42364 /* steps_dirt_4.mp3 */; };
+		11FB4CAB2BE2B11F00C42364 /* steps_dirt_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA42BE2B11F00C42364 /* steps_dirt_5.mp3 */; };
+		11FB4CAC2BE2B11F00C42364 /* steps_dirt_6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA52BE2B11F00C42364 /* steps_dirt_6.mp3 */; };
 		4B726A052BDFA04300626682 /* Page1AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B726A042BDFA04300626682 /* Page1AR.swift */; };
 		4BD6990C2BE009560085E99B /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6990B2BE009560085E99B /* LandingPage.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +56,12 @@
 		11FB4C982BE2372600C42364 /* Forest_Ambient.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Forest_Ambient.wav; sourceTree = "<group>"; };
 		11FB4C9A2BE23C3400C42364 /* Fog.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fog.sks; sourceTree = "<group>"; };
 		11FB4C9B2BE23C3400C42364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		11FB4CA02BE2B11F00C42364 /* steps_dirt_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_1.mp3; sourceTree = "<group>"; };
+		11FB4CA12BE2B11F00C42364 /* steps_dirt_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_2.mp3; sourceTree = "<group>"; };
+		11FB4CA22BE2B11F00C42364 /* steps_dirt_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_3.mp3; sourceTree = "<group>"; };
+		11FB4CA32BE2B11F00C42364 /* steps_dirt_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_4.mp3; sourceTree = "<group>"; };
+		11FB4CA42BE2B11F00C42364 /* steps_dirt_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_5.mp3; sourceTree = "<group>"; };
+		11FB4CA52BE2B11F00C42364 /* steps_dirt_6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_6.mp3; sourceTree = "<group>"; };
 		4B726A042BDFA04300626682 /* Page1AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1AR.swift; sourceTree = "<group>"; };
 		4BD6990B2BE009560085E99B /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +131,7 @@
 		110F649E2BDC0DD30031CC8B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				11FB4CA62BE2B11F00C42364 /* Footsteps */,
 				11FB4C982BE2372600C42364 /* Forest_Ambient.wav */,
 				11FB4C942BE226C600C42364 /* Semak.usdz */,
 				11FB4C952BE226C600C42364 /* Ground.usdz */,
@@ -131,6 +144,19 @@
 				11FB4C9B2BE23C3400C42364 /* Assets.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		11FB4CA62BE2B11F00C42364 /* Footsteps */ = {
+			isa = PBXGroup;
+			children = (
+				11FB4CA02BE2B11F00C42364 /* steps_dirt_1.mp3 */,
+				11FB4CA12BE2B11F00C42364 /* steps_dirt_2.mp3 */,
+				11FB4CA22BE2B11F00C42364 /* steps_dirt_3.mp3 */,
+				11FB4CA32BE2B11F00C42364 /* steps_dirt_4.mp3 */,
+				11FB4CA42BE2B11F00C42364 /* steps_dirt_5.mp3 */,
+				11FB4CA52BE2B11F00C42364 /* steps_dirt_6.mp3 */,
+			);
+			path = Footsteps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,13 +217,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FB4CAB2BE2B11F00C42364 /* steps_dirt_5.mp3 in Resources */,
 				11FB4C972BE226C600C42364 /* Ground.usdz in Resources */,
+				11FB4CAC2BE2B11F00C42364 /* steps_dirt_6.mp3 in Resources */,
 				110F64B12BDFB2FE0031CC8B /* Pohon_Jauh.usdz in Resources */,
+				11FB4CAA2BE2B11F00C42364 /* steps_dirt_4.mp3 in Resources */,
 				110F648F2BDC0BAC0031CC8B /* Preview Assets.xcassets in Resources */,
 				11FB4C932BE0D96700C42364 /* tiger_roar.mp3 in Resources */,
 				11FB4C962BE226C600C42364 /* Semak.usdz in Resources */,
+				11FB4CA92BE2B11F00C42364 /* steps_dirt_3.mp3 in Resources */,
 				11FB4C9C2BE23C3400C42364 /* Fog.sks in Resources */,
+				11FB4CA72BE2B11F00C42364 /* steps_dirt_1.mp3 in Resources */,
 				11FB4C9D2BE23C3400C42364 /* Assets.xcassets in Resources */,
+				11FB4CA82BE2B11F00C42364 /* steps_dirt_2.mp3 in Resources */,
 				110F64A22BDC0E120031CC8B /* Tiger.usdz in Resources */,
 				110F64A02BDC0E040031CC8B /* Mountain_BG.png in Resources */,
 				11FB4C992BE2372600C42364 /* Forest_Ambient.wav in Resources */,
@@ -360,6 +392,7 @@
 				INFOPLIST_FILE = "Nyoba-ARKit-Lagi-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Monara;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Wants to use camera for AR";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Wants to use motion data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -395,6 +428,7 @@
 				INFOPLIST_FILE = "Nyoba-ARKit-Lagi-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Monara;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Wants to use camera for AR";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Wants to use motion data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

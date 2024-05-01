@@ -9,6 +9,7 @@ import Combine
 import SwiftUI
 import RealityKit
 import ARKit
+import CoreMotion
 
 class CustomARView: ARView {
     
@@ -20,6 +21,13 @@ class CustomARView: ARView {
     
     var tap = UITapGestureRecognizer()
     
+    private let pedometer: CMPedometer = CMPedometer()
+    private let activityManager: CMMotionActivityManager = CMMotionActivityManager()
+    private var steps: Int = 0
+    
+    private let numOfFootstep = 6
+    private var footstepsAudio: [AudioResource?] = []
+    
     required init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
     }
@@ -30,8 +38,6 @@ class CustomARView: ARView {
     
     convenience init(){
         self.init(frame: UIScreen().bounds)
-        
-//        self.environment.background = .
         
         planeDetection()
 //        coaching tu yg ada tulisan "Move iPhone to Start"
@@ -53,6 +59,9 @@ class CustomARView: ARView {
         
 //        ambient sound
         loadAmbient()
+        
+//        buat pedometer
+        startUpdating()
         
 //        createBackground()
 //        subscribeToActionStream()
@@ -82,6 +91,67 @@ class CustomARView: ARView {
 
     }
     
+    private func startUpdating() {
+        if CMMotionActivityManager.isActivityAvailable() {
+            startTrackingActivityType()
+        }
+        
+        if CMPedometer.isStepCountingAvailable() {
+            startCountingSteps()
+        }
+    }
+    
+    private func startTrackingActivityType() {
+        activityManager.startActivityUpdates(to: OperationQueue.main) { (activity: CMMotionActivity?) in
+
+            guard let activity = activity else { return }
+            DispatchQueue.main.async {
+                if activity.walking {
+                    print("Walking")
+                } else if activity.stationary {
+                    print("Stationary")
+                } else if activity.running {
+                    print("Running")
+                } else if activity.automotive {
+                    print("Automotive")
+                }
+            }
+        }
+    }
+    
+    private func startCountingSteps() {
+        let stepEntity = Entity()
+        let stepAnchor = AnchorEntity()
+        
+        stepAnchor.addChild(stepEntity)
+        self.scene.addAnchor(stepAnchor)
+        
+        pedometer.startUpdates(from: Date()) { (data: CMPedometerData?, error) -> Void in
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                if(error == nil){
+                    let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
+                    let controller = stepEntity.prepareAudio(self.footstepsAudio[randFootstep]!)
+                    
+                    controller.play()
+//                    controller.completionHandler = {
+//                        let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
+//                        let secController = stepEntity.prepareAudio(self.footstepsAudio[randFootstep]!)
+//                        
+//                        secController.play()
+//                        secController.completionHandler = {
+//                            let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
+//                            _ = stepEntity.playAudio(self.footstepsAudio[randFootstep]!)
+//                        }
+//                    }
+                    
+                    self.steps = data!.numberOfSteps.intValue
+                    print(self.steps)
+                }
+            })
+        }
+    }
+    
     func planeDetection(){
 //        yang ada disini gw kurang tau juga, baca2 aja wkwkw. gw asal nambah soalnya
         self.automaticallyConfigureSession = true
@@ -99,6 +169,13 @@ class CustomARView: ARView {
     
     func loadAudio(){
         tigerAudio = try? AudioFileResource.load(named: "tiger_roar.mp3", inputMode: .spatial, loadingStrategy: .preload,  shouldLoop: false)
+        
+//        ada 6 footsteps sound
+        for i in 1...numOfFootstep {
+            let footstep = try? AudioFileResource.load(named: "steps_dirt_\(i).mp3", inputMode: .nonSpatial, loadingStrategy: .preload,  shouldLoop: false)
+            footstepsAudio.append(footstep)
+        }
+
     }
     
     func loadAmbient(){
@@ -123,7 +200,7 @@ class CustomARView: ARView {
 //        fogNode.addParticleSystem(fog)
 //        
 //        anchor.addChild(fogNode)
-//        
+//
 //        self.scene.
 //    }
     
@@ -169,7 +246,6 @@ class CustomARView: ARView {
         print(entity.name)
         
         if(entity.name == "Macan") {
-//            modelAction()
             tigerEntity?.playAudio(tigerAudio!)
         }
         
