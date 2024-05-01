@@ -45,7 +45,14 @@ class CustomARView: ARView {
         for _ in 1...10{
             placeTree(tree: "Maple_Tree")
             placeTree(tree: "Pohon_Jauh")
+            placeTree(tree: "Semak")
         }
+        
+//        buat ground
+//        loadGround(ground: "Ground")
+        
+//        ambient sound
+        loadAmbient()
         
 //        createBackground()
 //        subscribeToActionStream()
@@ -93,6 +100,32 @@ class CustomARView: ARView {
     func loadAudio(){
         tigerAudio = try? AudioFileResource.load(named: "tiger_roar.mp3", inputMode: .spatial, loadingStrategy: .preload,  shouldLoop: false)
     }
+    
+    func loadAmbient(){
+        let ambientEntity = Entity()
+        let ambientAnchor = AnchorEntity()
+        
+        let ambient = try? AudioFileResource.load(named: "Forest_Ambient.wav", inputMode: .ambient, loadingStrategy: .preload,  shouldLoop: true)
+        
+        ambientAnchor.addChild(ambientEntity)
+        
+        self.scene.addAnchor(ambientAnchor)
+        ambientEntity.playAudio(ambient!)
+    }
+    
+//    func loadFog(){
+//        let anchor = AnchorEntity()
+//        let fogEntity = Entity()
+//        
+//        let fogNode = SCNNode()
+//        
+//        guard let fog = SCNParticleSystem(named: "Fog.sks", inDirectory: nil) else {return}
+//        fogNode.addParticleSystem(fog)
+//        
+//        anchor.addChild(fogNode)
+//        
+//        self.scene.
+//    }
     
 //    cancellable is needed whenever your app is using Combine
     private var cancellables: Set<AnyCancellable> = []
@@ -178,7 +211,7 @@ class CustomARView: ARView {
         tigerEntity = try? Entity.loadModel(named: "Tiger.usdz")
         
         
-        tigerEntity?.setScale(SIMD3(x: 0.1, y: 0.1, z: 0.1), relativeTo: tigerEntity)
+        tigerEntity?.setScale(SIMD3(x: 0.3, y: 0.3, z: 0.3), relativeTo: tigerEntity)
         tigerEntity?.name = "Macan"
         
 //        nyalain collision buat modelnya
@@ -271,6 +304,13 @@ class CustomARView: ARView {
             x = randPosValidator(r1: 5, r2: 0, axis: x)
             z = randPosValidator(r1: 5, r2: 0, axis: z)
             
+        case "Semak":
+            x = Float.random(in: -10 ... 10)
+            z = Float.random(in: -10 ... 10)
+            
+            x = randPosValidator(r1: 1, r2: 0, axis: x)
+            z = randPosValidator(r1: 1, r2: 0, axis: z)
+            
         default:
             print("No Tree model with that name")
         }
@@ -295,6 +335,23 @@ class CustomARView: ARView {
             })
         
         anchorEntity.setPosition(randomTreePosition(tree: tree), relativeTo: anchorEntity)
+        
+        scene.addAnchor(anchorEntity)
+    }
+    
+    func loadGround(ground: String){
+        let anchorEntity = AnchorEntity(plane: .horizontal)
+        
+        var cancellable: AnyCancellable? = nil
+        cancellable = Entity.loadModelAsync(named: ground + ".usdz")
+            .sink(receiveCompletion: { error in
+                print(error)
+                cancellable?.cancel()
+            }, receiveValue: { entity in
+                anchorEntity.addChild(entity)
+                entity.setScale(SIMD3<Float>(x: 3, y: 3, z: 3), relativeTo: entity)
+                cancellable?.cancel()
+            })
         
         scene.addAnchor(anchorEntity)
     }

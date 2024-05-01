@@ -20,6 +20,11 @@
 		110F64A92BDF8BB50031CC8B /* Maple_Tree.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 110F64A82BDF8BB50031CC8B /* Maple_Tree.usdz */; };
 		110F64B12BDFB2FE0031CC8B /* Pohon_Jauh.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 110F64B02BDFB2FE0031CC8B /* Pohon_Jauh.usdz */; };
 		11FB4C932BE0D96700C42364 /* tiger_roar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4C922BE0D96700C42364 /* tiger_roar.mp3 */; };
+		11FB4C962BE226C600C42364 /* Semak.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4C942BE226C600C42364 /* Semak.usdz */; };
+		11FB4C972BE226C600C42364 /* Ground.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4C952BE226C600C42364 /* Ground.usdz */; };
+		11FB4C992BE2372600C42364 /* Forest_Ambient.wav in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4C982BE2372600C42364 /* Forest_Ambient.wav */; };
+		11FB4C9C2BE23C3400C42364 /* Fog.sks in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4C9A2BE23C3400C42364 /* Fog.sks */; };
+		11FB4C9D2BE23C3400C42364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4C9B2BE23C3400C42364 /* Assets.xcassets */; };
 		4B726A052BDFA04300626682 /* Page1AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B726A042BDFA04300626682 /* Page1AR.swift */; };
 		4BD6990C2BE009560085E99B /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6990B2BE009560085E99B /* LandingPage.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +45,11 @@
 		110F64A82BDF8BB50031CC8B /* Maple_Tree.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Maple_Tree.usdz; sourceTree = "<group>"; };
 		110F64B02BDFB2FE0031CC8B /* Pohon_Jauh.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Pohon_Jauh.usdz; sourceTree = "<group>"; };
 		11FB4C922BE0D96700C42364 /* tiger_roar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tiger_roar.mp3; sourceTree = "<group>"; };
+		11FB4C942BE226C600C42364 /* Semak.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Semak.usdz; sourceTree = "<group>"; };
+		11FB4C952BE226C600C42364 /* Ground.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Ground.usdz; sourceTree = "<group>"; };
+		11FB4C982BE2372600C42364 /* Forest_Ambient.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Forest_Ambient.wav; sourceTree = "<group>"; };
+		11FB4C9A2BE23C3400C42364 /* Fog.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fog.sks; sourceTree = "<group>"; };
+		11FB4C9B2BE23C3400C42364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B726A042BDFA04300626682 /* Page1AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1AR.swift; sourceTree = "<group>"; };
 		4BD6990B2BE009560085E99B /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,11 +119,16 @@
 		110F649E2BDC0DD30031CC8B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				11FB4C982BE2372600C42364 /* Forest_Ambient.wav */,
+				11FB4C942BE226C600C42364 /* Semak.usdz */,
+				11FB4C952BE226C600C42364 /* Ground.usdz */,
 				110F64A82BDF8BB50031CC8B /* Maple_Tree.usdz */,
 				110F64B02BDFB2FE0031CC8B /* Pohon_Jauh.usdz */,
 				11FB4C922BE0D96700C42364 /* tiger_roar.mp3 */,
 				110F64A12BDC0E110031CC8B /* Tiger.usdz */,
 				110F649F2BDC0E040031CC8B /* Mountain_BG.png */,
+				11FB4C9A2BE23C3400C42364 /* Fog.sks */,
+				11FB4C9B2BE23C3400C42364 /* Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -176,11 +191,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FB4C972BE226C600C42364 /* Ground.usdz in Resources */,
 				110F64B12BDFB2FE0031CC8B /* Pohon_Jauh.usdz in Resources */,
 				110F648F2BDC0BAC0031CC8B /* Preview Assets.xcassets in Resources */,
 				11FB4C932BE0D96700C42364 /* tiger_roar.mp3 in Resources */,
+				11FB4C962BE226C600C42364 /* Semak.usdz in Resources */,
+				11FB4C9C2BE23C3400C42364 /* Fog.sks in Resources */,
+				11FB4C9D2BE23C3400C42364 /* Assets.xcassets in Resources */,
 				110F64A22BDC0E120031CC8B /* Tiger.usdz in Resources */,
 				110F64A02BDC0E040031CC8B /* Mountain_BG.png in Resources */,
+				11FB4C992BE2372600C42364 /* Forest_Ambient.wav in Resources */,
 				110F648C2BDC0BAC0031CC8B /* Assets.xcassets in Resources */,
 				110F64A92BDF8BB50031CC8B /* Maple_Tree.usdz in Resources */,
 			);
