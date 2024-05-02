@@ -31,6 +31,7 @@
 		11FB4CAA2BE2B11F00C42364 /* steps_dirt_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA32BE2B11F00C42364 /* steps_dirt_4.mp3 */; };
 		11FB4CAB2BE2B11F00C42364 /* steps_dirt_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA42BE2B11F00C42364 /* steps_dirt_5.mp3 */; };
 		11FB4CAC2BE2B11F00C42364 /* steps_dirt_6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA52BE2B11F00C42364 /* steps_dirt_6.mp3 */; };
+		11FB4CAE2BE37D4700C42364 /* footstep_combined.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CAD2BE37D4700C42364 /* footstep_combined.mp3 */; };
 		4B726A052BDFA04300626682 /* Page1AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B726A042BDFA04300626682 /* Page1AR.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		11FB4CA32BE2B11F00C42364 /* steps_dirt_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_4.mp3; sourceTree = "<group>"; };
 		11FB4CA42BE2B11F00C42364 /* steps_dirt_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_5.mp3; sourceTree = "<group>"; };
 		11FB4CA52BE2B11F00C42364 /* steps_dirt_6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_6.mp3; sourceTree = "<group>"; };
+		11FB4CAD2BE37D4700C42364 /* footstep_combined.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = footstep_combined.mp3; sourceTree = "<group>"; };
 		4B726A042BDFA04300626682 /* Page1AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1AR.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 		11FB4CA62BE2B11F00C42364 /* Footsteps */ = {
 			isa = PBXGroup;
 			children = (
+				11FB4CAD2BE37D4700C42364 /* footstep_combined.mp3 */,
 				11FB4CA02BE2B11F00C42364 /* steps_dirt_1.mp3 */,
 				11FB4CA12BE2B11F00C42364 /* steps_dirt_2.mp3 */,
 				11FB4CA22BE2B11F00C42364 /* steps_dirt_3.mp3 */,
@@ -223,6 +226,7 @@
 				11FB4C932BE0D96700C42364 /* tiger_roar.mp3 in Resources */,
 				11FB4C962BE226C600C42364 /* Semak.usdz in Resources */,
 				11FB4CA92BE2B11F00C42364 /* steps_dirt_3.mp3 in Resources */,
+				11FB4CAE2BE37D4700C42364 /* footstep_combined.mp3 in Resources */,
 				11FB4C9C2BE23C3400C42364 /* Fog.sks in Resources */,
 				11FB4CA72BE2B11F00C42364 /* steps_dirt_1.mp3 in Resources */,
 				11FB4C9D2BE23C3400C42364 /* Assets.xcassets in Resources */,
@@ -382,7 +386,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nyoba_ARKit_Lagi/Preview Content\"";
-				DEVELOPMENT_TEAM = 9583KK75Q4;
+				DEVELOPMENT_TEAM = 53V73K3799;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nyoba-ARKit-Lagi-Info.plist";
@@ -418,7 +422,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nyoba_ARKit_Lagi/Preview Content\"";
-				DEVELOPMENT_TEAM = 9583KK75Q4;
+				DEVELOPMENT_TEAM = 53V73K3799;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nyoba-ARKit-Lagi-Info.plist";

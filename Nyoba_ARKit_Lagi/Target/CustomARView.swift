@@ -27,6 +27,10 @@ class CustomARView: ARView {
     
     private let numOfFootstep = 6
     private var footstepsAudio: [AudioResource?] = []
+    private var combinedFootstepAudio: AudioResource?
+    
+    let stepEntity = Entity()
+    let stepAnchor = AnchorEntity()
     
     required init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
@@ -92,9 +96,9 @@ class CustomARView: ARView {
     }
     
     private func startUpdating() {
-        if CMMotionActivityManager.isActivityAvailable() {
-            startTrackingActivityType()
-        }
+//        if CMMotionActivityManager.isActivityAvailable() {
+//            startTrackingActivityType()
+//        }
         
         if CMPedometer.isStepCountingAvailable() {
             startCountingSteps()
@@ -102,50 +106,65 @@ class CustomARView: ARView {
     }
     
     private func startTrackingActivityType() {
+        stepAnchor.addChild(stepEntity)
+        self.scene.addAnchor(stepAnchor)
+
+//        let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
+//        let controller = stepEntity.prepareAudio(self.footstepsAudio[randFootstep]!)
+        let controller = stepEntity.prepareAudio(combinedFootstepAudio!)
+        
         activityManager.startActivityUpdates(to: OperationQueue.main) { (activity: CMMotionActivity?) in
 
             guard let activity = activity else { return }
             DispatchQueue.main.async {
-                if activity.walking {
-                    print("Walking")
-                } else if activity.stationary {
-                    print("Stationary")
-                } else if activity.running {
-                    print("Running")
-                } else if activity.automotive {
-                    print("Automotive")
+                if activity.stationary {
+                    controller.stop()
+                }else if activity.walking{
+                    controller.play()
                 }
             }
         }
     }
     
     private func startCountingSteps() {
-        let stepEntity = Entity()
-        let stepAnchor = AnchorEntity()
-        
         stepAnchor.addChild(stepEntity)
         self.scene.addAnchor(stepAnchor)
         
         pedometer.startUpdates(from: Date()) { (data: CMPedometerData?, error) -> Void in
             
             DispatchQueue.main.async(execute: { () -> Void in
+                let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
+                let controller = self.stepEntity.prepareAudio(self.footstepsAudio[randFootstep]!)
+                
+//                let controller = self.stepEntity.prepareAudio(self.combinedFootstepAudio!)
                 if(error == nil){
-                    let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
-                    let controller = stepEntity.prepareAudio(self.footstepsAudio[randFootstep]!)
+                    let tempStep = self.steps
+                    self.steps = (data?.numberOfSteps.intValue)!
                     
-                    controller.play()
-//                    controller.completionHandler = {
-//                        let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
-//                        let secController = stepEntity.prepareAudio(self.footstepsAudio[randFootstep]!)
-//                        
-//                        secController.play()
-//                        secController.completionHandler = {
-//                            let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
-//                            _ = stepEntity.playAudio(self.footstepsAudio[randFootstep]!)
-//                        }
+//                    if(tempStep == self.steps){
+//                        print("gak jalan")
+//                        controller.stop()
+//                    }else{
+//                        controller.play()
 //                    }
                     
-                    self.steps = data!.numberOfSteps.intValue
+                    
+                    controller.completionHandler = {
+                        let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
+                        let secController = self.stepEntity.prepareAudio(self.footstepsAudio[randFootstep]!)
+                        
+                        secController.play()
+                        secController.completionHandler = {
+                            let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
+                            let thirdController = self.stepEntity.prepareAudio(self.footstepsAudio[randFootstep]!)
+                            
+                            thirdController.play()
+                            thirdController.completionHandler = {
+                                let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
+                                _ = self.stepEntity.playAudio(self.footstepsAudio[randFootstep]!)
+                            }
+                        }
+                    }
                     print(self.steps)
                 }
             })
@@ -175,6 +194,8 @@ class CustomARView: ARView {
             let footstep = try? AudioFileResource.load(named: "steps_dirt_\(i).mp3", inputMode: .nonSpatial, loadingStrategy: .preload,  shouldLoop: false)
             footstepsAudio.append(footstep)
         }
+        
+        combinedFootstepAudio = try? AudioFileResource.load(named: "footstep_combined.mp3", inputMode: .nonSpatial, loadingStrategy: .preload,  shouldLoop: true)
 
     }
     
@@ -246,7 +267,7 @@ class CustomARView: ARView {
         print(entity.name)
         
         if(entity.name == "Macan") {
-            tigerEntity?.playAudio(tigerAudio!)
+//            tigerEntity?.playAudio(tigerAudio!)
         }
         
 //        raycast = 2d to 3d
@@ -308,6 +329,7 @@ class CustomARView: ARView {
         
         playAnimation()
         loadAudio()
+
 //        tigerEntity?.playAudio(tigerAudio!)
         
         scene.addAnchor(anchorEntity)
@@ -435,6 +457,7 @@ class CustomARView: ARView {
     func moveEntity(direction: String) -> AnimationPlaybackController{
         var movement: AnimationPlaybackController!
         
+        tigerEntity?.playAudio(tigerAudio!)
         
         switch direction{
         case "forward":
