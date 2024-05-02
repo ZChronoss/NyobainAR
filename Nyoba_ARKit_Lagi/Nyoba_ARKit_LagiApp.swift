@@ -12,7 +12,6 @@ struct Nyoba_ARKit_LagiApp: App {
     var body: some Scene {
         WindowGroup {
             Page1AR()
-//            LandingPage()
         }
     }
 }

@@ -32,7 +32,6 @@
 		11FB4CAB2BE2B11F00C42364 /* steps_dirt_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA42BE2B11F00C42364 /* steps_dirt_5.mp3 */; };
 		11FB4CAC2BE2B11F00C42364 /* steps_dirt_6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA52BE2B11F00C42364 /* steps_dirt_6.mp3 */; };
 		4B726A052BDFA04300626682 /* Page1AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B726A042BDFA04300626682 /* Page1AR.swift */; };
-		4BD6990C2BE009560085E99B /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6990B2BE009560085E99B /* LandingPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +62,6 @@
 		11FB4CA42BE2B11F00C42364 /* steps_dirt_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_5.mp3; sourceTree = "<group>"; };
 		11FB4CA52BE2B11F00C42364 /* steps_dirt_6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_6.mp3; sourceTree = "<group>"; };
 		4B726A042BDFA04300626682 /* Page1AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1AR.swift; sourceTree = "<group>"; };
-		4BD6990B2BE009560085E99B /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +121,6 @@
 				110F64982BDC0C610031CC8B /* CustomARViewRepresentable.swift */,
 				110F64892BDC0BAA0031CC8B /* ContentView.swift */,
 				4B726A042BDFA04300626682 /* Page1AR.swift */,
-				4BD6990B2BE009560085E99B /* LandingPage.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -251,7 +248,6 @@
 				110F649D2BDC0C610031CC8B /* ARAction.swift in Sources */,
 				110F649A2BDC0C610031CC8B /* ARManager.swift in Sources */,
 				110F649B2BDC0C610031CC8B /* CustomARView.swift in Sources */,
-				4BD6990C2BE009560085E99B /* LandingPage.swift in Sources */,
 				110F64882BDC0BAA0031CC8B /* Nyoba_ARKit_LagiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,7 +382,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nyoba_ARKit_Lagi/Preview Content\"";
-				DEVELOPMENT_TEAM = 53V73K3799;
+				DEVELOPMENT_TEAM = 9583KK75Q4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nyoba-ARKit-Lagi-Info.plist";
@@ -422,7 +418,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nyoba_ARKit_Lagi/Preview Content\"";
-				DEVELOPMENT_TEAM = 53V73K3799;
+				DEVELOPMENT_TEAM = 9583KK75Q4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nyoba-ARKit-Lagi-Info.plist";
