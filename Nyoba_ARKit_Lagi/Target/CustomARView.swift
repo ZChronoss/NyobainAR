@@ -16,6 +16,7 @@ class CustomARView: ARView {
     var moveToLocation: Transform = Transform()
     var tigerEntity: ModelEntity?
     var tigerAudio: AudioResource?
+    var tigerAudio2: AudioResource?
     
     var treeModel: ModelEntity?
     
@@ -188,6 +189,7 @@ class CustomARView: ARView {
     
     func loadAudio(){
         tigerAudio = try? AudioFileResource.load(named: "tiger_roar.mp3", inputMode: .spatial, loadingStrategy: .preload,  shouldLoop: false)
+        tigerAudio2 = try? AudioFileResource.load(named: "tiger_roar_2.mp3", inputMode: .spatial, loadingStrategy: .preload,  shouldLoop: false)
         
 //        ada 6 footsteps sound
         for i in 1...numOfFootstep {
@@ -195,7 +197,7 @@ class CustomARView: ARView {
             footstepsAudio.append(footstep)
         }
         
-        combinedFootstepAudio = try? AudioFileResource.load(named: "footstep_combined.mp3", inputMode: .nonSpatial, loadingStrategy: .preload,  shouldLoop: true)
+        combinedFootstepAudio = try? AudioFileResource.load(named: "footstep_combined.mp3", inputMode: .spatial, loadingStrategy: .preload,  shouldLoop: false)
 
     }
     
@@ -457,7 +459,17 @@ class CustomARView: ARView {
     func moveEntity(direction: String) -> AnimationPlaybackController{
         var movement: AnimationPlaybackController!
         
-        tigerEntity?.playAudio(tigerAudio!)
+        let randomAudio = Int.random(in: 0 ... 2)
+        
+        if randomAudio == 0 {
+            tigerEntity?.playAudio(tigerAudio!)
+        }else if randomAudio == 1{
+            tigerEntity?.playAudio(tigerAudio2!)
+        }else{
+            tigerEntity?.playAudio(combinedFootstepAudio!)
+            
+        }
+        
         
         switch direction{
         case "forward":

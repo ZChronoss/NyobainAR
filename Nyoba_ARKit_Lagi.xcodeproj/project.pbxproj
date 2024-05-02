@@ -32,6 +32,7 @@
 		11FB4CAB2BE2B11F00C42364 /* steps_dirt_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA42BE2B11F00C42364 /* steps_dirt_5.mp3 */; };
 		11FB4CAC2BE2B11F00C42364 /* steps_dirt_6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CA52BE2B11F00C42364 /* steps_dirt_6.mp3 */; };
 		11FB4CAE2BE37D4700C42364 /* footstep_combined.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CAD2BE37D4700C42364 /* footstep_combined.mp3 */; };
+		11FB4CB02BE3886300C42364 /* tiger_roar_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11FB4CAF2BE3886300C42364 /* tiger_roar_2.mp3 */; };
 		4B726A052BDFA04300626682 /* Page1AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B726A042BDFA04300626682 /* Page1AR.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		11FB4CA42BE2B11F00C42364 /* steps_dirt_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_5.mp3; sourceTree = "<group>"; };
 		11FB4CA52BE2B11F00C42364 /* steps_dirt_6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steps_dirt_6.mp3; sourceTree = "<group>"; };
 		11FB4CAD2BE37D4700C42364 /* footstep_combined.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = footstep_combined.mp3; sourceTree = "<group>"; };
+		11FB4CAF2BE3886300C42364 /* tiger_roar_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tiger_roar_2.mp3; sourceTree = "<group>"; };
 		4B726A042BDFA04300626682 /* Page1AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1AR.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +139,7 @@
 				110F64A82BDF8BB50031CC8B /* Maple_Tree.usdz */,
 				110F64B02BDFB2FE0031CC8B /* Pohon_Jauh.usdz */,
 				11FB4C922BE0D96700C42364 /* tiger_roar.mp3 */,
+				11FB4CAF2BE3886300C42364 /* tiger_roar_2.mp3 */,
 				110F64A12BDC0E110031CC8B /* Tiger.usdz */,
 				110F649F2BDC0E040031CC8B /* Mountain_BG.png */,
 				11FB4C9A2BE23C3400C42364 /* Fog.sks */,
@@ -219,6 +222,7 @@
 			files = (
 				11FB4CAB2BE2B11F00C42364 /* steps_dirt_5.mp3 in Resources */,
 				11FB4C972BE226C600C42364 /* Ground.usdz in Resources */,
+				11FB4CB02BE3886300C42364 /* tiger_roar_2.mp3 in Resources */,
 				11FB4CAC2BE2B11F00C42364 /* steps_dirt_6.mp3 in Resources */,
 				110F64B12BDFB2FE0031CC8B /* Pohon_Jauh.usdz in Resources */,
 				11FB4CAA2BE2B11F00C42364 /* steps_dirt_4.mp3 in Resources */,
