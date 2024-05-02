@@ -141,14 +141,14 @@ class CustomARView: ARView {
                     let tempStep = self.steps
                     self.steps = (data?.numberOfSteps.intValue)!
                     
-//                    if(tempStep == self.steps){
-//                        print("gak jalan")
-//                        controller.stop()
-//                    }else{
-//                        controller.play()
-//                    }
+                    if(tempStep == self.steps){
+                        print("gak jalan")
+                        controller.stop()
+                    }else{
+                        controller.play()
+                    }
                     
-                    
+//                    controller.play()
                     controller.completionHandler = {
                         let randFootstep = Int.random(in: 0...(self.numOfFootstep - 1))
                         let secController = self.stepEntity.prepareAudio(self.footstepsAudio[randFootstep]!)
